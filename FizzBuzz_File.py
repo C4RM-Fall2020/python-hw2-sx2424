@@ -2,10 +2,12 @@ import numpy as np
 
 def FizzBuzz(start, finish):
 
-    nums = np.arange(start, finish, dtype=object)
+    nums = np.arange(start, finish + 1, dtype=object)
 
-    fizz = (nums.astype(int) % 3 == 0)
-    buzz = (nums.astype(int) % 5 == 0)
+    values = nums.astype(int)
+
+    fizz = values % 3 == 0
+    buzz = values % 5 == 0
 
     nums[fizz] = "fizz"
     nums[buzz] = "buzz"
