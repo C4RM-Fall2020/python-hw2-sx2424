@@ -1,8 +1,15 @@
 import numpy as np
 
 def getBondPrice(y, face, couponRate, m, ppy=1):
-    if ppy == 1:
-        x = 2170604
-    if ppy == 2:
-        x = 2171686
-    return(x)
+
+    t = np.arange(1, m * ppy + 1)
+
+    coupon = face * couponRate / ppy
+
+    discount = (1 + y / ppy) ** t
+
+    pv_coupon = np.sum(coupon / discount)
+
+    pv_face = face / ((1 + y / ppy) ** (m * ppy))
+
+    return pv_coupon + pv_face
